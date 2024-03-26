@@ -10,23 +10,21 @@
             <div class="customer">
                 <router-link to="/customer">고객센터</router-link>
             </div>
-            <div @click="menuOnOff" class="menu">
+            <div class="menu">
                 <div class="bar">
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <div class="profile">
                     <i class="fa-solid fa-user"></i>
                 </div>
-                <ul v-show="menuOpen" class="menu__contents">
+            </div>
+            <div class="menu__contents">
+                <ul>
                     <li>
-                        <a href="#">
-                            로그인/회원가입
-                        </a>
+                        로그인/회원가입
                     </li>
                     <li>
-                        <a href="#">
                         비회원 예약조회
-                        </a>
                     </li>
                 </ul>
             </div>
@@ -35,18 +33,9 @@
 </template>
 
 <script>
+import axios from 'axios';
     export default {
-        name: "Header",
-        data(){
-            return {
-                menuOpen : false
-            }
-        },
-        methods: {
-            menuOnOff(){
-                this.menuOpen = !this.menuOpen;
-            }
-        }
+        name: "Header"
     }
 </script>
 
@@ -59,8 +48,7 @@
         h1 {
             width: 110px;
             a {
-                display: flex;
-                align-items: center;
+                display: block;
             }
         }
         .header__nav {
@@ -85,52 +73,23 @@
                 align-items: center;
                 gap: 6px;
                 border-radius: 9999px;
-                border: 1px solid rgba(235, 235, 235, 1);
+                border: 1px solid #000;
                 padding: 0 13px;
-                cursor: pointer;
                 .bar{
                     flex: 1;
                 }
                 .profile{
                     flex:1;
-                    i { 
-                        display: flex;
-                        justify-content:center;
-                        align-items: center;
-                        color: #fff;
-                        background: rgb(214,214,214);
-                        width: 24px;
-                        height: 24px;
-                        border-radius: 50%;
-                        font-size: 12px;
-                    }
                 }
-                .menu__contents {
-                    width: 168px;
-                    height: 88px;
-                    display: block;
-                    position: absolute;
-                    top: 130%;
-                    left: 0;
-                    background: #fff;
-                    border-radius: 8px;
-                    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.08);
-                    padding: 8px 0;
-                    text-align: start;
-                    z-index: 99999;
-                    li {
-                        a{
-                            display: block;
-                        }
-                        font-size: 14px;
-                        padding: 8px 16px;
-                        color: #333;
-                        &:hover {
-                            background: rgba(235, 235, 235, 1)
-                        }
-                    }
             }
-        }
+            .menu__contents {
+                width: 168px;
+                height: 88px;
+                display: none;
+                position: absolute;
+                top: 10px;
+                left: 0;
+            }
         }
     }
 </style>
